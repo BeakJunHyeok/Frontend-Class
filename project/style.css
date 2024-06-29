@@ -1,0 +1,149 @@
+/* reset */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul,
+ol,
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+:root {
+  --main-width: 1190px;
+}
+/* header */
+
+/* Home */
+
+#home {
+  background: url("./img/bg_main.jpg") center/cover no-repeat;
+  height: 100vh;
+  position: relative;
+}
+
+#home .title {
+  width: 1000px;
+  height: 300px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+}
+
+#home .title h1 {
+  font-size: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
+  color: #fff;
+}
+
+#home .title p {
+  font-size: 30px;
+  font-weight: 400;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+/* about */
+
+.category {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 50px;
+}
+
+.category h2 {
+  font-size: 48px;
+  margin: 20px;
+}
+
+#about {
+  position: relative;
+  background: url("./img/bg_about.jfif") center/cover no-repeat;
+  height: 80vh;
+}
+
+#about .img_box {
+  width: 300px;
+  height: 300px;
+  margin: 0 auto;
+  margin-bottom: 30px;
+}
+
+#about .img_box img {
+  height: 100%;
+  padding: 0 auto;
+}
+
+#about .introduction {
+  width: 300px;
+  margin: 0 auto;
+}
+
+#about .about_profile {
+  margin: 0 auto;
+  padding: 30px 20px;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 10px rgba(255 255 255 /63%);
+  width: 300px;
+}
+
+#about .desc_box1 {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#about .desc_box1 li p:first-child {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+#about .desc_box1 li p:last-child {
+  font-size: 13px;
+  margin-top: 5px;
+}
+
+#about .desc_box2 {
+  font-size: 13px;
+  padding: 0 25px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+#about .desc_box2 span {
+  display: inline-block;
+  height: 20px;
+  line-height: 20px;
+  border: 1px solid white;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 10px rgb(255 255 255 / 63%);
+  padding: 5px;
+}
+
+#about .desc_box2 span:first-child {
+  width: 200px;
+}
+
+#about .desc_box2 span:last-child {
+  width: 20px;
+}
