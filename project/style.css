@@ -69,6 +69,10 @@ a {
 .category h2 {
   font-size: 48px;
   margin: 20px;
+  color: aquamarine;
+}
+
+.card1 {
 }
 
 #about {
@@ -77,21 +81,27 @@ a {
   height: 80vh;
 }
 
-#about .img_box {
-  width: 300px;
-  height: 300px;
-  margin: 0 auto;
-  margin-bottom: 30px;
-}
-
-#about .img_box img {
-  height: 100%;
-  padding: 0 auto;
-}
-
-#about .introduction {
-  width: 300px;
-  margin: 0 auto;
+.card1 {
+  position: absolute;
+  left: 100px;
+  top: 50%;
+  transform: translateY(-60%);
+  border: 1px solid #f00;
+  .front {
+    img {
+      width: 150px;
+      height: 150px;
+    }
+  }
+  .back {
+    font-size: 16px;
+    color: #fff;
+    text-align: center;
+    img {
+      width: 150px;
+      height: 150px;
+    }
+  }
 }
 
 #about .about_profile {
@@ -100,8 +110,26 @@ a {
   border: 1px solid #fff;
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 0 10px rgba(255 255 255 /63%);
+  width: 342px;
+  height: 529px;
+  margin-top: 30px;
+}
+
+#about .img_box {
   width: 300px;
+  height: 300px;
+  margin-bottom: 30px;
+}
+
+#about .img_box img {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+}
+
+#about .introduction {
+  width: 100%px;
+  margin: 0 auto;
 }
 
 #about .desc_box1 {
@@ -109,41 +137,51 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
+  width: 100%;
+  gap: 10px;
 }
 
 #about .desc_box1 li p:first-child {
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 600;
+  color: #fff;
 }
 
 #about .desc_box1 li p:last-child {
-  font-size: 13px;
+  font-size: 16px;
   margin-top: 5px;
+  color: #fff;
 }
 
 #about .desc_box2 {
-  font-size: 13px;
-  padding: 0 25px;
-  margin-bottom: 10px;
+  font-size: 16px;
   display: flex;
+  padding: 0 25px;
+  margin: 10px;
+  gap: 10px;
   justify-content: space-between;
 }
 
 #about .desc_box2 span {
+  width: 212px;
+  text-align: center;
   display: inline-block;
-  height: 20px;
   line-height: 20px;
   border: 1px solid white;
   border-radius: 6px;
   background: rgba(255, 255, 255, 0.1);
   box-shadow: 0 0 10px rgb(255 255 255 / 63%);
   padding: 5px;
+  color: #fff;
 }
 
 #about .desc_box2 span:first-child {
-  width: 200px;
+  width: 220px;
+  height: 32px;
 }
 
 #about .desc_box2 span:last-child {
-  width: 20px;
+  width: 30px;
+  height: 32px;
 }
