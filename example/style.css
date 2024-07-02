@@ -154,45 +154,22 @@ a {
 #background_img {
   width: 100%;
   height: 100vh;
-  /*background: radial-gradient(circle, transparent, rgba(0, 0, 0, 0.7)),
-    url("./img/bg.png") center/cover no-repeat;*/
-  /*background-image: radial-gradient(circle, transparent, rgba(0, 0, 0, 0.7)),
-    url("./img/bg1.jpg"); */
-  background-position: 0 25%;
+  background-position: 0 10%;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-/* top banner */
+/* top_lnb */
 
-#top_banner {
+#top_lnb {
   width: 100%;
   height: 60px;
-  background: #222;
+  background: #00dc64;
   color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
-}
-
-#top_banner .badge {
-  text-transform: uppercase;
-  background: #e92130;
-  font-size: 16px;
-  padding: 10px 16px;
-  padding-top: 8px;
-  border-radius: 30px;
-}
-
-#top_banner .title {
-  font-size: 18px;
-}
-
-/* top_lnb */
-#top_lnb {
-  width: 100%;
-  color: #fff;
+  border: none;
 }
 
 #top_lnb ul {
@@ -235,9 +212,22 @@ a {
   width: 100%;
   display: flex;
   justify-content: center;
-  gap: 5px;
+  gap: 30px;
   position: absolute;
   bottom: 10;
   transform: translateY(50px);
-  border: 1px solid #f00;
+}
+
+#card_items span {
+  padding-bottom: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+}
+
+#card_items ul li img {
+  width: 250px;
+  height: 300px;
 }
