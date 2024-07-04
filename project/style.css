@@ -309,87 +309,55 @@ a {
 }
 
 /* favorite */
-
-#favorite .category h2 {
-  margin-bottom: 10px;
-}
-
 #favorite {
   background: url("./img/bg_favorite.jfif");
-  position: relative;
   background-size: cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-#favorite .slide_warp {
-  width: 100%;
-  height: 80vh;
-  margin: 50px auto;
-  position: relative;
+#favorite .slide_warpper {
+  width: 1160px;
+  height: 400px;
   overflow: hidden;
-}
-
-#favorite .slide_warp .slides {
-  position: absolute;
-  left: 0;
-  top: 0;
-  transition: left 0.5 ease-in-out;
-}
-
-#favorite .slide_warp .slides li:not(:last-child) {
   position: relative;
-  float: left;
-  margin-right: 10px;
+  .slides {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    &.animated {
+      transition: all 0.5s ease-out;
+    }
+    li {
+      width: 380px;
+      height: 400px;
+      &:not(:last-child) {
+        margin-right: 10px;
+      }
+      img {
+        width: 360px;
+        height: 320px;
+      }
+      .slide_text_box {
+        width: 360px;
+        height: 100px;
+        .title {
+          color: #fff;
+          padding-bottom: 2px;
+          font-size: 18px;
+        }
+        .desc {
+          color: #fff;
+          font-size: 14px;
+        }
+      }
+    }
+  }
 }
 
-#favorite .slide_img_box {
-  width: 250px;
-  height: 250px;
-  border: 1px solid #f00;
+.controls {
+  font-size: 25px;
 }
-
-#favorite .slide_img_box img {
-  width: 100%;
-  height: 100%;
-}
-
-#favorite .slide_text_box {
-  text-align: left;
-}
-
-#favorite .slide_text_box .title {
-  font-size: 20px;
-  font-weight: 600;
-}
-
-#favorite .slide_text_box .desc {
-  font-size: 12px;
-  text-align: center;
-  margin-top: 6px;
-}
-
-/* #favorite .slide_text_box span {
-  position: absolute;
-  right: 10px;
-  top: -5px;
-  font-size: 40px;
-  font-weight: 600;
-  color: white;
-} */
-
-/* #favorite .controls .prev,
-#favorite .controls .next {
-  position: absolute;
-  font-size: 40px;
-  cursor: pointer;
-  font-weight: 600;
-  transform: translateY(-50);
-  top: 50%;
-}
-
-#favorite .controls .prev {
-  left: 100px;
-}
-
-#favorite .controls .next {
-  right: 100px;
-} */
