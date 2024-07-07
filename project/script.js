@@ -1,3 +1,21 @@
+// Home 텍스트 타이핑
+const content = "Hello, I’m BeakJunHyeok!";
+const text = document.querySelector(".title h1");
+let textIdx = 0;
+
+function typing() {
+  let txt = content[textIdx++];
+
+  text.innerHTML += txt;
+
+  if (textIdx > content.length) {
+    text.textContent = "";
+    textIdx = 0;
+  }
+}
+
+setInterval(typing, 200);
+
 // favorite slide
 const btns = document.querySelector(".controls");
 const prevBtn = btns.querySelector(".prev");
@@ -11,7 +29,7 @@ const slideWidth = 380;
 const slideMargin = 10;
 
 let currentIdx = 0;
-
+// 복제한 5개의 li노드를 왼쪽으로 이동 시키기 위한 함수1
 const updateWidth = () => {
   const currentSlides = document.querySelectorAll(".slides li");
   const newSlideCount = currentSlides.length;
@@ -20,7 +38,6 @@ const updateWidth = () => {
   }px`;
   slides.style.width = newWidth;
 };
-
 //복제한 5개의 li노드를 왼쪽으로 이동 시키기 위한 함수2
 const setInitialPos = () => {
   const initialTranslateValue = -(slideWidth + slideMargin) * slideCount;

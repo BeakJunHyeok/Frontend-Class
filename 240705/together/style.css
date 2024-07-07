@@ -123,6 +123,7 @@ section {
   .inner {
     width: 1180px;
     margin: 0 auto;
+    border: 1px solid #f00;
     h1 {
       color: #555;
       font: bold 24px/1 "arial";
