@@ -1,0 +1,249 @@
+/* reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul,
+ol,
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* wrapper */
+#wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  padding: 30px;
+  background: rgba(255, 255, 255, 1);
+}
+
+/* login */
+#login {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+#login input[type="submit"] {
+  font-size: 18px;
+  padding: 8px 45px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  background: #0845af;
+  color: #fff;
+  transition: all 0.3s;
+  &:hover {
+    cursor: pointer;
+    border: 1px solid #fff;
+    background: #000;
+    color: #fff;
+  }
+}
+
+/* logo */
+#logo {
+  width: 300px;
+  height: 60px;
+  background: url(./img/logo.PNG) center/cover no-repeat;
+  margin: 70px auto 34px;
+}
+
+/* logon */
+#logon {
+  width: 463px;
+  height: 650px;
+  background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+  margin: 0 auto 50px;
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+  position: relative;
+}
+
+.inner_contents {
+  color: #fff;
+  font-size: 14px;
+}
+
+.title {
+  width: 423px;
+  text-align: center;
+  margin-bottom: 30px;
+  font-weight: bold;
+  font-size: 22px;
+}
+
+#calendar {
+  display: flex;
+  justify-content: space-around;
+  margin: 10px 0 30px;
+}
+
+select {
+  width: 141px;
+  height: 40px;
+  font-size: 16px;
+  background-color: #fff;
+  color: #bdbebe;
+  padding-left: 30px;
+  &:first-child {
+    border-radius: 8px 0 0 8px;
+  }
+  &:last-child {
+    border-radius: 0 8px 8px 0;
+  }
+}
+
+.username #user {
+  width: 100%;
+  height: 40px;
+  margin: 10px 0 30px;
+  border: 1px solid #707070;
+  border-radius: 8px;
+  padding-left: 12px;
+  font-size: 16px;
+  color: #000;
+  &:focus {
+    outline: none;
+  }
+}
+
+.userpassword #password {
+  width: 100%;
+  height: 40px;
+  margin: 10px 0 30px;
+  border: 1px solid #707070;
+  border-radius: 8px;
+  padding-left: 12px;
+  font-size: 16px;
+  color: #000;
+  &:focus {
+    outline: none;
+  }
+}
+
+#gender_btn {
+  margin: 10px 0 30px;
+  display: flex;
+  button {
+    cursor: pointer;
+    width: 100%;
+    height: 50px;
+    background-color: #0845af;
+    color: #bdbebe;
+    border: 1px solid #707070;
+    &:first-child {
+      border-radius: 8px 0 0 8px;
+      border-right: transparent;
+      &:last-child {
+        border-radius: 0 8px 8px 0;
+      }
+    }
+    i {
+      width: 50px;
+      display: inline-block;
+      height: 50px;
+      font-size: 24px;
+      padding: 10px;
+      border: 2px solid transparent;
+      border-radius: 100%;
+      &.filledA {
+        border: 2px solid #dc143c;
+        background-color: #dc143c;
+        color: #fff;
+      }
+      &.filledB {
+        border: 2px solid #007bff;
+        background-color: #007bff;
+        color: #fff;
+      }
+    }
+  }
+}
+
+.check {
+  margin: 25px 0;
+  input[type="checkbox"] {
+    scale: 2;
+    margin: 10px;
+  }
+}
+
+.btn input[type="submit"] {
+  width: 100%;
+  height: 40px;
+  border: 1px solid transparent;
+  background-color: #0845af;
+  color: #fff;
+  font-size: 16px;
+  border-radius: 8px;
+  transition: all 0.3s;
+  &:hover {
+    cursor: pointer;
+    border: 1px solid #919293;
+    background-color: #000;
+  }
+}
+
+/* footer */
+footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  h3 {
+    color: #000;
+  }
+  #items {
+    display: flex;
+    gap: 10px;
+    margin-top: 40px;
+    .inner_item {
+      color: #fff;
+      width: 200px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid #fff;
+      border-radius: 8px;
+      padding: 10px;
+      transition: all 0.3s;
+      &:nth-child(1) {
+        background-color: #9147ff;
+      }
+      &:nth-child(2) {
+        background-color: #0766ff;
+      }
+      &:nth-child(3) {
+        background-color: #03ca5b;
+      }
+      &:nth-child(4) {
+        background-color: #000;
+      }
+      i {
+        font-size: 38px;
+      }
+      .inner_item_body {
+        font-size: 22px;
+      }
+      &:hover {
+        cursor: pointer;
+        background-color: #fff;
+        color: #000;
+        border: 1px solid #000;
+      }
+    }
+  }
+}
