@@ -21,6 +21,7 @@ body {
   height: 200px;
   overflow: hidden;
   position: relative;
+  border: 1px solid #f00;
   /* border: 1px solid #f00; */
   .slides {
     position: absolute;

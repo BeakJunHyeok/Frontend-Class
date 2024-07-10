@@ -14,3 +14,8 @@ a {
   text-decoration: none;
   color: inherit;
 }
+
+@font-face {
+  font-family: "Binggrae";
+  src: url("./font/BinggraeMelona-Bold.otf");
+}
