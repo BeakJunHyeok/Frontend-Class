@@ -711,7 +711,8 @@ header a:hover .tooltip_text {
     .inner {
       width: 100%;
       .slide_warpper {
-        margin-left: 14px;
+        width: 380px;
+        height: 400px;
       }
     }
   }
