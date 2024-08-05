@@ -1,0 +1,73 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+}
+body .content {
+  width: 600px;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+body .content header {
+  padding: 20px 0 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
+body .content .main {
+  display: flex;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+body .content .main .item {
+  display: flex;
+  padding: 20px;
+  gap: 30px;
+}
+body .content .main .item .image {
+  width: 200px;
+  height: 100%;
+}
+body .content .main .item .image img {
+  width: 100%;
+  height: 100%;
+}
+body .content .main .item .desc {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+body .content .main .item .desc .btn {
+  margin-top: 50px;
+  border: 1px solid #ddd;
+  padding: 20px 10px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+body .content .more {
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  display: none;
+}
+body .content .more .line {
+  border: 2px dotted #000;
+  width: 200px;
+}
+body .content .more .more_header {
+  font-size: 14px;
+  font-weight: bold;
+}
+body .content .more p {
+  padding-top: 20px;
+}
+body .content .more.active {
+  display: block;
+}/*# sourceMappingURL=style.css.map */
