@@ -14,16 +14,26 @@ a {
   color: inherit;
 }
 
+/* built-in-function */
+$color: (
+  accent-color: #dc143c,
+  bg-dark-color: #000,
+  bd-light-color: #fff,
+  bg-gray-color: #808080,
+  theme-color: #55b2e4,
+);
+$size: 14px;
+
 /* common */
 .background {
   width: 100%;
   height: 100vh;
-  background: url("./contents/bg_2.jpg");
+  background: url("./img/img3.jpg") center/cover;
   display: flex;
   justify-content: center;
   align-items: center;
   .outerbox {
-    background: url("./contents/outerbox.png") center/cover no-repeat;
+    background: url("./img/outerbox.png") center/cover no-repeat;
     width: 808px;
     height: 544px;
     position: relative;
@@ -149,7 +159,7 @@ a {
     width: 100%;
     height: 33px;
     background: map-get($color, theme-color);
-    color: map-get($color, bd-light-color);
+    color: #fff;
     text-align: center;
     line-height: 30px;
     border-radius: 0 10px 10px 0;

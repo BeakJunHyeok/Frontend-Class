@@ -1,0 +1,50 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  .contanier {
+    .circles {
+      display: flex;
+      gap: 10px;
+      .circle {
+        width: 30px;
+        height: 30px;
+        background: crimson;
+        border-radius: 50%;
+        animation: circle 1s linear infinite;
+        &:nth-child(2) {
+          background: dodgerblue;
+          animation: circle 1s linear infinite;
+          animation-delay: 0.2s;
+        }
+        &:nth-child(3) {
+          background: darkblue;
+          animation: circle 1s linear infinite;
+          animation-delay: 0.4s;
+        }
+      }
+    }
+  }
+}
+
+@keyframes circle {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+}

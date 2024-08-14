@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="contanier">
+      <div class="circles">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+      </div>
+    </div>
+    <script>
+      const name = prompt("PM의 이름은?");
+      const loading = document.querySelector(".circles");
+      setTimeout(() => {
+        loading.remove();
+        document.write(name);
+      }, 3000);
+    </script>
+  </body>
+</html>
