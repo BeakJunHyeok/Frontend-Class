@@ -47,7 +47,7 @@ body {
         top: 0;
         left: 0;
         .bar {
-          width: 50%;
+          // width: 50%;
           height: 100%;
           background: $main-progress-color;
           position: relative;
@@ -121,7 +121,7 @@ body {
     &:hover .controls {
       transform: translateY(0);
     }
-    &:hover .circle {
+    &:hover .controls .progress .bar .circle {
       opacity: 1;
     }
   }
