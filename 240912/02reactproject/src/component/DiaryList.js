@@ -12,6 +12,7 @@ const DiaryContents = styled.div`
   margin: 20px 0 30px;
   gap: 10px;
 `;
+
 const ListContents = styled.div``;
 
 const LeftContent = styled.div`
@@ -31,10 +32,13 @@ const Select = styled.select`
   height: 100%;
   border: none;
   border-radius: 5px;
-  padding: 10px 20px;
-  cursor: pointer;
-  font-size: 18px;
+  padding: 10px 30px;
+  font-size: 28px;
   font-family: "Nanum Pen Script", cursive;
+  cursor: pointer;
+  &:focus {
+    outline: none;
+  }
 `;
 
 const sortOptionList = [
@@ -49,13 +53,13 @@ const DiaryList = ({ data }) => {
   useEffect(() => {
     const compare = (a, b) => {
       if (sortType === "latest") {
-        return Number(a.date) - Number(b.date);
-      } else {
         return Number(b.date) - Number(a.date);
+      } else {
+        return Number(a.date) - Number(b.date);
       }
     };
     const copyList = JSON.parse(JSON.stringify(data));
-    data.sort(compare);
+    copyList.sort(compare);
     setSortedData(copyList);
   }, [data, sortType]);
   const onChangeSortType = (e) => {

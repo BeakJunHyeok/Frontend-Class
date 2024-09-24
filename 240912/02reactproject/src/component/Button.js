@@ -13,7 +13,7 @@ const ButtonItem = styled.button`
       ? `background: #64c964; color: #fff;`
       : type === "negative"
       ? `background: #fd565f; color: #fff;`
-      : `background: #ccc; color: #000;`}
+      : `background: #ccc; color: #000;`};
 `;
 
 const Button = ({ text, type, onClick }) => {

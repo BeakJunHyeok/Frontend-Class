@@ -6,8 +6,8 @@ const EmotionContent = styled.div`
   border-radius: 5px;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   padding: 20px;
   & img {
     width: 50%;
@@ -56,4 +56,4 @@ const EmotionItem = ({ id, name, img, onClick, isSelected }) => {
   );
 };
 
-export default EmotionItem;
+export default React.memo(EmotionItem);

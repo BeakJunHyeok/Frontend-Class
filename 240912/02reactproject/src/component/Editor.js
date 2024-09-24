@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import Button from "./Button";
 import styled from "styled-components";
-import { getFormattedDate, emotionList } from "../util";
+import Header from "./Header";
+import Button from "./Button";
 import EmotionItem from "./EmotionItem";
+import { getFormattedDate, emotionList } from "../util";
 
 const EditorSection = styled.div`
   margin-bottom: 40px;
@@ -14,20 +15,20 @@ const EditorSection = styled.div`
 
 const Textarea = styled.textarea`
   border: none;
-  background: #ececec;
   border-radius: 5px;
+  background: #ececec;
   padding: 20px;
   font-size: 20px;
   font-family: "Nanum Pen Script", cursive;
-  width: 100%;
+  width: 93%;
   min-height: 200px;
   resize: none;
 `;
 
 const Input = styled.input`
   border: none;
-  background: #ececec;
   border-radius: 5px;
+  background: #ececec;
   padding: 10px 20px;
   font-size: 20px;
   font-family: "Nanum Pen Script", cursive;
@@ -53,7 +54,6 @@ const Editor = ({ initData, onSubmit }) => {
     emotionId: 1,
     content: "",
   });
-
   useEffect(() => {
     if (initData) {
       setState({
@@ -62,13 +62,6 @@ const Editor = ({ initData, onSubmit }) => {
       });
     }
   }, [initData]);
-
-  const handleChangeEmotion = (emotionId) => {
-    setState({
-      ...state,
-      emotionId,
-    });
-  };
 
   const handleChangeDate = (e) => {
     setState({
@@ -91,6 +84,13 @@ const Editor = ({ initData, onSubmit }) => {
   const handleGoBack = () => {
     navigate(-1);
   };
+
+  const handleChangeEmotion = useCallback((emotionId) => {
+    setState((state) => ({
+      ...state,
+      emotionId,
+    }));
+  }, []);
 
   return (
     <div>

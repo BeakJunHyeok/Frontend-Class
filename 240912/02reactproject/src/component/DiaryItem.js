@@ -8,8 +8,8 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 0;
   gap: 20px;
+  padding: 15px 0;
   border-bottom: 1px solid #e2e2e2;
 `;
 
@@ -89,4 +89,4 @@ const DiaryItem = ({ id, date, content, emotionId }) => {
   );
 };
 
-export default DiaryItem;
+export default React.memo(DiaryItem);
