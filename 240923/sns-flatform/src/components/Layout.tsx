@@ -56,7 +56,6 @@ const Layout = () => {
         <Link to={"/"}>
           <MenuItem>
             <svg
-              dataSlot="icon"
               fill="currentColor"
               viewBox="0 0 20 20"
               xmlns="http://www.w3.org/2000/svg"
@@ -73,7 +72,6 @@ const Layout = () => {
         <Link to={"/profile"}>
           <MenuItem>
             <svg
-              dataSlot="icon"
               fill="currentColor"
               viewBox="0 0 20 20"
               xmlns="http://www.w3.org/2000/svg"
@@ -85,7 +83,6 @@ const Layout = () => {
         </Link>
         <MenuItem className="log-out" onClick={onLogOut}>
           <svg
-            dataSlot="icon"
             fill="currentColor"
             viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg"
