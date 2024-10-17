@@ -4,6 +4,10 @@ import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Navbar, Container, Nav, Form } from "react-bootstrap";
 
+const Wrapper = styled.div`
+  padding: 0 10px;
+`;
+
 const Logo = styled.img`
   width: 100px;
 `;
@@ -18,9 +22,9 @@ const BtnItem = styled.span`
 
 const Navigation = () => {
   return (
-    <div>
+    <Wrapper>
       <Navbar bg="dark" variant="dark">
-        <Container fluid>
+        <Container fluid className="inner-item">
           <Navbar.Brand href="#">
             <Logo
               src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/800px-Netflix_2015_logo.svg.png"
@@ -57,7 +61,7 @@ const Navigation = () => {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-    </div>
+    </Wrapper>
   );
 };
 

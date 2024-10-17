@@ -24,6 +24,10 @@ const GlobalStyles = createGlobalStyle`
     text-decoration: none;
     color: inherit;
   }
+  body {
+    background: #000;
+    color: #fff;
+  }
 `;
 
 const router = createBrowserRouter([
