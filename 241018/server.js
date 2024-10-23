@@ -3,12 +3,12 @@ import { ApolloServer, gql } from "apollo-server";
 let tweets = [
   {
     id: "1",
-    text: "First one!",
+    text: "First One!",
     userId: "2",
   },
   {
     id: "2",
-    text: "Second one!",
+    text: "Second One!",
     userId: "1",
   },
 ];
@@ -45,11 +45,11 @@ const typeDefs = gql`
     author: User
   }
   type Query {
-    allTweets: [Tweet]!
+    allTweets: [Tweet!]!
     allUsers: [User!]!
     allMovies: [Movie!]!
     tweet(id: ID!): Tweet
-    movie(id: String): Movie
+    movie(id: String!): Movie
   }
   type Mutation {
     postTweet(text: String, userId: ID): Tweet!
@@ -136,6 +136,7 @@ const resolvers = {
     author({ userId }) {
       const result = users.find((user) => user.id === userId);
       if (!result) {
+        console.log("해당 자료가 없습니다!");
         return null;
       }
       return result;
@@ -143,8 +144,8 @@ const resolvers = {
   },
 };
 
-const server = new ApolloServer({ typeDefs, resolvers });
+const sever = new ApolloServer({ typeDefs, resolvers });
 
-server.listen().then(({ url }) => {
+sever.listen().then(({ url }) => {
   console.log(`Running on ${url}`);
 });
