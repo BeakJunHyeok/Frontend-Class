@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import { fetchCoins } from "../api";
+import { Helmet } from "react-helmet";
 
 const Container = styled.main`
   width: 100%;
@@ -30,14 +33,14 @@ const Coin = styled.li`
   padding: 20px;
   border-radius: 8px;
   margin-bottom: 10px;
-  display: flex;
+  font-size: 20px;
   cursor: pointer;
   a {
     display: flex;
-    margin: 0 10px;
     align-items: center;
     color: inherit;
     transition: color 0.3s;
+    margin: 0 10px;
     &:hover {
       color: ${(props) => props.theme.accentColor};
     }
@@ -52,10 +55,10 @@ const Loader = styled.span`
 const Img = styled.img`
   width: 35px;
   height: auto;
-  margin: 0 10px;
+  margin: 0 4px;
 `;
 
-interface CoinInterface {
+export interface CoinInterface {
   id: string;
   name: string;
   symbol: string;
@@ -66,32 +69,38 @@ interface CoinInterface {
 }
 
 const Coins = () => {
-  const [coins, setCoins] = useState<CoinInterface[]>([]);
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    (async () => {
-      const response = await fetch(
-        "https://raw.githubusercontent.com/Divjason/coindata/refs/heads/main/coins.json"
-      );
-      const json = await response.json();
-      console.log(json);
-      setCoins(json.slice(0, 101));
-      setLoading(false);
-    })();
-  }, []);
+  // const [coins, setCoins] = useState<CoinInterface[]>([]);
+  // const [loading, setLoading] = useState(true);
+  // useEffect(() => {
+  //   (async () => {
+  //     const response = await fetch(
+  //       "https://raw.githubusercontent.com/Divjason/coindata/refs/heads/main/coins.json"
+  //     );
+  //     const json = await response.json();
+  //     setCoins(json.slice(0, 101));
+  //     setLoading(false);
+  //   })();
+  // }, []);
+  const { isLoading, data } = useQuery<CoinInterface[]>({
+    queryKey: ["allCoins"],
+    queryFn: fetchCoins,
+  });
   return (
     <Container>
+      <Helmet>
+        <title>Coin List</title>
+      </Helmet>
       <Header>
         <Title>Coin List</Title>
       </Header>
-      {loading ? (
+      {isLoading ? (
         <Loader>"Loading..."</Loader>
       ) : (
         <CoinList>
-          {coins.map((coin) => (
+          {data?.slice(0, 100).map((coin) => (
             <Coin key={coin.id}>
               <Link to={`/${coin.id}`} state={`${coin.name}`}>
-                👑Now Rank: {coin.rank}
+                🥇Now Rank : {coin.rank}
                 <Img
                   src={`https://cryptoicon-api.pages.dev/api/icon/${coin.symbol.toLowerCase()}`}
                 />
