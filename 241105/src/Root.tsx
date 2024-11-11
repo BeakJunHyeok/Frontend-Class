@@ -1,4 +1,3 @@
-import React from "react";
 import { Outlet } from "react-router-dom";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 import theme from "./theme";
@@ -11,13 +10,13 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
-  li,ul {
+  ul, li {
     list-style: none;
   }
 
   a {
     text-decoration: none;
-    color:inherit
+    color: inherit;
   }
 
   body {

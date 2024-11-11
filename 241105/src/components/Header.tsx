@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { motion, useAnimation, useScroll } from "framer-motion";
-import { Link, useMatch } from "react-router-dom";
+import { Link, useMatch, useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
 
 const Nav = styled(motion.nav)`
   width: 100%;
@@ -14,6 +15,7 @@ const Nav = styled(motion.nav)`
   font-size: 18px;
   position: fixed;
   top: 0;
+  z-index: 1;
 `;
 
 const Col = styled.div`
@@ -41,13 +43,13 @@ const Items = styled.ul`
 
 const Item = styled.li`
   display: flex;
-  justify-content: center;
   flex-direction: column;
-  transition: color 0.3s;
+  justify-content: center;
   position: relative;
+  transition: opacity 0.3s;
   cursor: pointer;
   &:hover {
-    color: ${(props) => props.theme.black.veryDark};
+    opacity: 0.7;
   }
 `;
 
@@ -63,7 +65,7 @@ const Circle = styled(motion.span)`
   background: ${(props) => props.theme.red};
 `;
 
-const Search = styled.span`
+const Search = styled.form`
   color: ${(props) => props.theme.red};
   display: flex;
   align-items: center;
@@ -71,20 +73,21 @@ const Search = styled.span`
   position: relative;
   cursor: pointer;
   svg {
-    fill: ${(props) => props.theme.red};
     width: 18px;
     height: 18px;
+    fill: ${(props) => props.theme.red};
   }
 `;
 
 const Input = styled(motion.input)`
+  width: 200px;
   position: absolute;
   left: -170px;
   transform-origin: right center;
   background: transparent;
-  border: none;
   color: ${(props) => props.theme.red};
   font-size: 18px;
+  border: none;
   border-bottom: 1px solid ${(props) => props.theme.white.darker};
   &:focus {
     outline: none;
@@ -101,17 +104,33 @@ const logoVariants = {
   },
 };
 
+interface Form {
+  keyword: string;
+}
+
 const Header = () => {
   const [searchOpen, setSearchOpen] = useState(false);
   const homeMatch = useMatch("/");
+  const modalMatch = useMatch("/movies/*");
   const tvMatch = useMatch("/tv");
   const inputAnimation = useAnimation();
   const navAnimation = useAnimation();
   const { scrollY } = useScroll();
+  const main = useNavigate();
+
+  const goToMain = () => {
+    main("/");
+  };
+
+  const { register, handleSubmit, setValue } = useForm<Form>();
+  const onValid = (data: Form) => {
+    main(`/search?keyword=${data.keyword}`);
+    setValue("keyword", "");
+  };
 
   const navVariants = {
-    top: { background: "rgba(0,0,0,0)" },
-    scroll: { background: "rgba(0,0,0,1)" },
+    top: { background: "rgba(0, 0, 0, 1)" },
+    scroll: { background: "rgba(255, 255, 255, 1)" },
   };
 
   useEffect(() => {
@@ -138,13 +157,10 @@ const Header = () => {
   };
 
   return (
-    <Nav
-      variants={navVariants}
-      animate={navAnimation}
-      initial={{ background: "rgba(0,0,0,1)" }}
-    >
+    <Nav variants={navVariants} animate={navAnimation} initial={"top"}>
       <Col>
         <Logo
+          onClick={goToMain}
           variants={logoVariants}
           initial="normal"
           whileHover="active"
@@ -157,18 +173,20 @@ const Header = () => {
         <Items>
           <Item>
             <Link to={"/"}>
-              Home {homeMatch && <Circle layoutId="circle" />}
+              Home
+              {homeMatch && <Circle layoutId="circle" />}
+              {modalMatch && <Circle layoutId="circle" />}
             </Link>
           </Item>
           <Item>
             <Link to={"/tv"}>
-              TV Shows{tvMatch && <Circle layoutId="circle" />}
+              TV Shows {tvMatch && <Circle layoutId="circle" />}
             </Link>
           </Item>
         </Items>
       </Col>
       <Col>
-        <Search>
+        <Search onSubmit={handleSubmit(onValid)}>
           <motion.svg
             onClick={openSearch}
             animate={{ x: searchOpen ? -194 : 0 }}
@@ -179,6 +197,7 @@ const Header = () => {
             <path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
           </motion.svg>
           <Input
+            {...register("keyword", { required: true, minLength: 2 })}
             type="text"
             transition={{ type: "linear" }}
             placeholder="Search for MOVIE or TV"

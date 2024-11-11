@@ -1,6 +1,6 @@
 import "styled-components";
 
-declare module "styeld-components" {
+declare module "styled-components" {
   export interface DefaultTheme {
     red: string;
     black: {
@@ -9,8 +9,8 @@ declare module "styeld-components" {
       lighter: string;
     };
     white: {
-      lighter: string;
       darker: string;
+      lighter: string;
     };
   }
 }
