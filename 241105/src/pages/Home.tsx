@@ -11,6 +11,7 @@ const Container = styled.div`
   height: 105vh;
   margin-top: 60px;
   background: ${(props) => props.theme.black.lighter};
+  overflow: hidden;
 `;
 
 const Loader = styled.div`
@@ -65,6 +66,7 @@ const Box = styled(motion.div)<{ bgPhoto: string | undefined }>`
   height: 200px;
   background: url(${(props) => props.bgPhoto}) center/cover no-repeat;
   font-size: 22px;
+  position: relative;
   cursor: pointer;
   &:first-child {
     transform-origin: center left;
@@ -83,7 +85,7 @@ const Info = styled(motion.div)`
   h4 {
     text-align: center;
     font-size: 16px;
-    color: ${(props) => props.theme.red};
+    color: ${(props) => props.theme.white.lighter};
   }
 `;
 
@@ -93,8 +95,8 @@ const ModalBox = styled(motion.div)`
   right: 0;
   margin: 0 auto;
   width: 40vw;
-  height: 68vh;
-  background: ${(props) => props.theme.black.lighter};
+  height: 80vh;
+  background: ${(props) => props.theme.black.darker};
   color: ${(props) => props.theme.white.darker};
   border-radius: 8px;
   overflow: hidden;
@@ -112,7 +114,7 @@ const Overlay = styled(motion.div)`
 
 const MovieCover = styled.div`
   width: 100%;
-  height: 400px;
+  height: 350px;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -120,18 +122,18 @@ const MovieCover = styled.div`
 
 const MovieTitle = styled.h3`
   color: ${(props) => props.theme.white.darker};
-  font-size: 28px;
-  padding: 20px;
-  position: relative;
-  top: -80px;
-`;
-
-const MovieOverView = styled.p`
-  padding: 0 20px;
-  line-height: 2;
-  font-size: 20px;
+  font-size: 23px;
+  padding: 10px;
   position: relative;
   top: -60px;
+`;
+
+const MovieOverview = styled.p`
+  padding: 20px;
+  line-height: 1.5;
+  font-size: 16px;
+  position: relative;
+  top: -40px;
 `;
 
 const rowVariants = {
@@ -157,7 +159,7 @@ const boxVariants = {
 
 const infoVariants = {
   hover: {
-    opacity: 0.7,
+    opacity: 1,
     transition: { delay: 0.5, duration: 0.3, type: "tween" },
   },
 };
@@ -189,7 +191,7 @@ const Home = () => {
 
   const toggleLeaving = () => setLeaving((prev) => !prev);
 
-  const onBoxClick = (movieId: number) => {
+  const onBoxClicked = (movieId: number) => {
     history(`/movies/${movieId}`);
   };
 
@@ -199,7 +201,11 @@ const Home = () => {
 
   const clickedMovie =
     movieMatch?.params.movieId &&
-    data?.results.find((movie) => movie.id === +movieMatch.params.movieId!);
+    data?.results.find(
+      (movie) => movie.id === Number(movieMatch.params.movieId)
+    );
+
+  console.log(clickedMovie);
 
   return (
     <Container>
@@ -209,10 +215,10 @@ const Home = () => {
         <>
           <Banner
             onClick={increaseIndex}
-            bgPhoto={makeImagePath(data?.results[0].backdrop_path || "")}
+            bgPhoto={makeImagePath(data?.results[6].backdrop_path || "")}
           >
-            <Title>{data?.results[0].original_title}</Title>
-            <Overview>{data?.results[0].overview}</Overview>
+            <Title>{data?.results[1].original_title}</Title>
+            <Overview>{data?.results[1].overview}</Overview>
           </Banner>
           <Slider>
             <AnimatePresence initial={false} onExitComplete={toggleLeaving}>
@@ -229,7 +235,7 @@ const Home = () => {
                   .slice(index * offset, index * offset + offset)
                   .map((movie) => (
                     <Box
-                      onClick={() => onBoxClick(movie.id)}
+                      onClick={() => onBoxClicked(movie.id)}
                       key={movie.id}
                       layoutId={movie.id + ""}
                       variants={boxVariants}
@@ -254,21 +260,21 @@ const Home = () => {
                   exit={{ opacity: 0 }}
                 />
                 <ModalBox
-                  layoutId={movieMatch.params.movieId}
                   style={{ top: scrollY.get() + 60 }}
+                  layoutId={movieMatch.params.movieId}
                 >
                   {clickedMovie && (
                     <>
                       <MovieCover
                         style={{
-                          backgroundImage: `linear-gradient(to top, #000, transparent), url(${makeImagePath(
+                          backgroundImage: `linear-gradient(to top, rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.5)),url(${makeImagePath(
                             clickedMovie.backdrop_path,
                             "w500"
                           )})`,
                         }}
                       />
                       <MovieTitle>{clickedMovie.title}</MovieTitle>
-                      <MovieOverView>{clickedMovie.overview}</MovieOverView>
+                      <MovieOverview>{clickedMovie.overview}</MovieOverview>
                     </>
                   )}
                 </ModalBox>
