@@ -1,4 +1,4 @@
-import { ReactNode, useState } from "react";
+import React, { ReactNode, useState } from "react";
 import { useRouter } from "next/router";
 import style from "./searchable-layout.module.css";
 
