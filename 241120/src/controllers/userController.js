@@ -1,7 +1,19 @@
+import User from "../models/user";
+
 export const getJoin = (req, res) => res.render("join", { pageTitle: "Join" });
 export const postJoin = async (req, res) => {
   const { email, username, password, name, location } = req.body;
-  await UserActivation.create({
+  const usernameExists = await User.exists({ username });
+  const pageTitle = "Join";
+  const exists = await User.exists({ $or: [{ username }, { email }] });
+  if (exists) {
+    return res.render("join", {
+      pageTitle,
+      errorMessage: "This username/email is already TrackEvent",
+    });
+  }
+
+  await User.create({
     email,
     username,
     password,
