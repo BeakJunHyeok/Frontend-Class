@@ -1,4 +1,3 @@
-import { response } from "express";
 import User from "../models/user";
 import bcrypt from "bcrypt";
 import Video from "../models/video";
@@ -106,7 +105,7 @@ export const finishGithubLogin = async (req, res) => {
         socialOnly: true,
         username: userData.login,
         password: "",
-        name: userData.login,
+        name: userData.name,
         location: userData.location,
       });
       req.session.loggedIn = true;
@@ -122,14 +121,15 @@ export const getEdit = (req, res) => {
   return res.render("edit-profile", { pageTitle: "Edit Profile" });
 };
 
-export const PostEdit = async (req, res) => {
+export const postEdit = async (req, res) => {
   const {
     session: {
-      user: { _id, email: sessionEmail, username: sessionUsername },
+      user: { _id, avatarUrl, email: sessionEmail, username: sessionUsername },
     },
     body: { name, email, username, location },
     file,
   } = req;
+
   const usernameExists =
     username !== sessionUsername ? await User.exists({ username }) : undefined;
 
@@ -213,7 +213,7 @@ export const postChangePassword = async (req, res) => {
   if (!ok) {
     return res.status(400).render("users/change-password", {
       pageTitle: "Change Password",
-      errorMessage: "The Password does not match the confirmation",
+      errorMessage: "The Current Password is incorrect",
     });
   }
 
@@ -223,7 +223,6 @@ export const postChangePassword = async (req, res) => {
       errorMessage: "The Password does not match the confirmation",
     });
   }
-
   user.password = newPassword;
   await user.save();
   req.session.user.password = user.password;
@@ -233,7 +232,6 @@ export const postChangePassword = async (req, res) => {
 export const see = async (req, res) => {
   const { id } = req.params;
   const user = await User.findById(id).populate("videos");
-  console.log(user);
   if (!user) {
     return res.status(404).render("404", { pageTitle: "User not Found." });
   }
